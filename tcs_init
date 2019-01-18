@@ -1,0 +1,16 @@
+#!/bin/sh
+# tcs: tcs.py wrapper
+
+tcs() {
+      local f
+      f=$(mktemp -q --suffix=.tcs)
+      python ${HOME}/opt/lib/python/tcs.py $* $f
+
+      if [ -e $f ]; then
+	source $f
+	rm -f $f
+      fi
+}
+
+# init tcs
+tcs init

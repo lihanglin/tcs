@@ -1,0 +1,10 @@
+CC = [
+    "/opt/riscv/toolchain/bin",
+    "/opt/riscv/linux/bin",
+]
+
+ALIAS = [
+    'arm="ARCH=arm CROSS_COMPILE=arm-linux-androideabi-"',
+    'arm64="ARCH=arm64 CROSS_COMPILE=aarch64-linux-android-"',
+    'rv64="ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu-"',
+]
