@@ -35,13 +35,16 @@ def pr_error(msg, *args, **kwargs):
     sys.exit(1)
 
 # import the user defined toolchain lists
+cclists_file = osp.join(os.environ['HOME'], '.cclists')
+
+if not osp.isfile(cclists_file):
+    pr_error("tcs: cannot access '%s': No such file or directory" % cclists_file)
+
 import imp
 try:
-    cclists = imp.load_source('cclists',
-                              osp.join(os.environ['HOME'], '.cclists'))
-except FileNotFoundError:
-    pr_error("~/.cclists: File not found")
-
+    cclists = imp.load_source('cclists', cclists_file)
+except:
+    pr_error("tcs: cannot load '%s': syntax error" % cclists_file)
 
 def parse_cmdopts():
     global cmdopts
